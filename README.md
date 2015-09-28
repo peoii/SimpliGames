@@ -15,6 +15,7 @@ Coming Soon
 
 ### _Roadmap_
 * Edit owned expansions in browser
+* Round out look and feel of overall app
 
 ### _Possible Future Inclusions_
 * Search
@@ -22,3 +23,4 @@ Coming Soon
 * Barcode Scan-To-Add (potential, need a solid mobile library)
 * Check to move from Wish -> Owned
 * Admin interface for adding users (low priority, shouldn't change often)
+* Consider local caching of data
