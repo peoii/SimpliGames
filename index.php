@@ -8,7 +8,6 @@ $gExpan = array();
 $gCounts = array();
 $uIsAdmin = false;
 
-
 // What pages are currently valid to access, with the value being the icon used in the menu
 $gValidPages = array(
   "owned" => "check",
@@ -16,7 +15,6 @@ $gValidPages = array(
   "tried" => "question",
   "admin" => ""
 );
-
 
 // Category icons for the list
 $gHCColors = array(
@@ -190,7 +188,6 @@ function handleDiffs() {
   fwrite($fHandle,json_encode($tArr,JSON_PRETTY_PRINT));
   fflush($fHandle);
   fclose($fHandle);
-
 }
 
 function loadBGGData($letters) {
@@ -224,9 +221,9 @@ function printSplits($page) {
       print("<a href=\"./?page=".$GLOBALS['pageID']."&amp;letters=".$key."\" class=\"letterTags".(($GLOBALS['letterID'] == $key) ? ' letterCurrent' : '')."\">[");
       if($key==1){
         $cPrint = "#".$cBreak;
-      } else { 
+      } else {
         $cPrint = $cBreak; 
-      } 
+      }
       print(strtoupper(($cPrint)));
       print("]</a>");
     }
@@ -310,12 +307,12 @@ if($pageID != "admin") {
         </form>
       <?php
           } else {
-	    if(isset($POST['processedPage'])) {
+      if(isset($POST['processedPage'])) {
       ?>
               Data Written to <?php print($POST['processedPage']); ?>
       <?php
             } // if
-	  } // if else else
+    } // if else else
         } //if admin
       ?>
       </div>
@@ -350,7 +347,7 @@ if($pageID != "admin") {
             </tr>
           </thead>
           <tbody>
-          <?php 
+          <?php
             foreach($GLOBALS['gData'] as $cData) {
           ?>
             <tr>
@@ -375,10 +372,10 @@ if($pageID != "admin") {
                 } //switch
               ?>
             </tr>
-          <?php     
+          <?php
             } // foreach
           ?>
-          </tbody> 
+          </tbody>
           <thead><tr><th>New</th></tr></thead>
           <tbody>
             <tr>
@@ -478,7 +475,7 @@ if($pageID != "admin") {
             ?></b><br>
           <?php } ?>
         </sub>
-        <div class="tagcontainer">Tags: <b><?php 
+        <div class="tagcontainer">Tags: <b><?php
           $linkFirst = 0;
           foreach($cXML->link as $cLink) {
             if($cLink->attributes()->type == "boardgamecategory") {
@@ -507,8 +504,8 @@ if($pageID != "admin") {
                 print("<table>");
                 print("<caption>Expansions</caption><tr>");
               } else if (($numExpans % 2) == 0) {
-	        print("<tr>");
-	      }
+          print("<tr>");
+        }
               $numExpans++;
               print("<td>");
               if(in_array(trim($cLink->attributes()->id),$GLOBALS['gExpan'])) {
@@ -523,9 +520,9 @@ if($pageID != "admin") {
               }
             }
           } //foreach
-	  if($numExpans > 0) {
-            print("</table>");
-	  }
+        if($numExpans > 0) {
+          print("</table>");
+        }
         ?>
       </div>
       <footer class="gamenotes">
@@ -533,9 +530,9 @@ if($pageID != "admin") {
           foreach($GLOBALS['gData'] as $cData) {
             if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
               if($GLOBALS['pageID'] == "tried"){
-  	        foreach($GLOBALS['ggUsers'] as $cUser) {
-	          print($cUser.": ".$cData->notes->$cUser."<br>");
-	        }
+            foreach($GLOBALS['ggUsers'] as $cUser) {
+            print($cUser.": ".$cData->notes->$cUser."<br>");
+          }
               } else if($cData->notes == "") {
                 print("No comment set yet");
               } else {
@@ -556,15 +553,15 @@ if($pageID != "admin") {
     } // if not page == admin
     ?>
   </div>
-  <?php 
-    if($GLOBALS['ggSplitByLetters']) {     
+  <?php
+    if($GLOBALS['ggSplitByLetters']) {
   ?>
   <div class="nav-buttons">
     <?php
       $cLetter = $GLOBALS['letterID'] - 1;
       if(array_key_exists($cLetter,$GLOBALS['gLetterBreaks'])) {
     ?>
-      <a href="./?page=<?php print($GLOBALS['pageID']); ?>&amp;letters=<?php print($cLetter);?>" class="button"><i class="fa fa-fw fa-caret-left"></i></a> 
+      <a href="./?page=<?php print($GLOBALS['pageID']); ?>&amp;letters=<?php print($cLetter);?>" class="button"><i class="fa fa-fw fa-caret-left"></i></a>
     <?php
       }
     ?>
@@ -572,7 +569,7 @@ if($pageID != "admin") {
       $cLetter = $GLOBALS['letterID'] + 1;
       if(array_key_exists($cLetter,$GLOBALS['gLetterBreaks'])) {
     ?>
-      <a href="./?page=<?php print($GLOBALS['pageID']); ?>&amp;letters=<?php print($cLetter);?>" class="button"><i class="fa fa-fw fa-caret-right"></i></a> 
+      <a href="./?page=<?php print($GLOBALS['pageID']); ?>&amp;letters=<?php print($cLetter);?>" class="button"><i class="fa fa-fw fa-caret-right"></i></a>
     <?php
       }
     ?>
@@ -581,8 +578,8 @@ if($pageID != "admin") {
    }
    ?>
    <footer>
-     <a href="//github.com/peoii/SimpliGames/"><i class="fa fa-fw fa-github"></i><span class="collapse-foot"> Github</span></a> &middot; 
-     <a href="//github.com/peoii/SimpliGames/issues"><i class="fa fa-fw fa-code-fork"></i><span class="collapse-foot"> Issue Tracker</span></a> &middot; 
+     <a href="//github.com/peoii/SimpliGames/"><i class="fa fa-fw fa-github"></i><span class="collapse-foot"> Github</span></a> &middot;
+     <a href="//github.com/peoii/SimpliGames/issues"><i class="fa fa-fw fa-code-fork"></i><span class="collapse-foot"> Issue Tracker</span></a> &middot;
      Created By <a href="//jamie.harrell.ca/">@peoii</a>
    </footer>
   </body>
