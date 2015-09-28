@@ -12,7 +12,7 @@ I liked working on it well enough that I decided to place this online anyone int
 6. profit
 
 ### _Notes_
-More info here in the future
+Coming Soon
 
 ### _Roadmap_
 * Edit owned expansions in browser
