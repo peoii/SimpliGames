@@ -1,0 +1,389 @@
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  text-align: justify;
+  background-color: indigo;
+  background-image: url(./darkcube.png);
+  min-height: 100px;
+  line-height: 100px;
+  margin-top: 0px;
+  color: #fff;
+  width: 100%;
+}
+
+header > div {
+  background-color: rgba(75,0,130,0.4);
+}
+
+header h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
+
+.nav-buttons,
+.main-wrapper {
+  margin-left: 15vw;
+}
+
+.sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  max-height: none;
+  min-height: 100%;
+  overflow: auto;
+  width: 15vw;
+  z-index: 1;
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  transition-property: top,bottom;
+  transition-duration: 0.2s,0.2s;
+  transition-timing-function: linear,linear;
+  background-color: black;
+  color: #fff;
+  box-shadow: inset 0 0px 15px 0 rgba(0, 0, 0, 0.24);
+}
+
+.sidebar-wrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15vw;
+  min-height: 100%;
+  z-index: -1;
+  background-image: url(./bkgd.jpg);
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.4;
+  background-color: black;
+}
+
+.sidebar-head {
+  font-size: 22px;
+  font-weight: 300;
+  background-color: indigo;
+  color: white;
+  text-align: left;
+  width: 100%;
+  padding: 10px 10px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+}
+.sidebar-head a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.sidebar-head a:hover {
+  color: #fff;
+}
+
+body > footer {
+  position: relative;
+  bottom: 0px;
+  width: calc(100% - 15vw);
+  left: 15vw;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+}
+
+body > footer a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+body > footer a:hover {
+  background-color: indigo;
+  color: white;
+  transition: all 0.2s ease-in;
+}
+
+nav {
+  min-height: 50px;
+  position: relative;
+}
+
+nav a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+  transition: all 0.3s ease-in;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+}
+
+nav a span {
+  float: right;
+}
+
+nav > a:last-of-type {
+  position: fixed;
+  bottom: 100px;
+  width: calc(15vw - 30px);
+}
+
+nav a:hover {
+  background-color: #913ECE;
+}
+
+nav a.letterTags {
+  display: inline-block;
+  min-width: 20%;
+  padding: 0.8vw;
+  text-align: center;
+  font-size: 0.9vw;
+}
+
+nav a.letterTags:hover {
+  background-color: #913ECE;
+}
+
+nav a.letterCurrent {
+  background-color: indigo;
+  font-weight: 500;
+}
+
+.letterIDs {
+  font-size: 13px;
+  background-color: rgba(0,0,0,0.6);
+  border-left: 5px solid indigo;
+}
+
+.admin_flag {
+  color: #F00;
+}
+
+.active {
+  font-weight: 500;
+  background-color: rgba(0,0,0,0.6);
+  background-color: indigo;
+  border-left: 5px solid indigo;
+}
+
+.active > i {
+}
+
+.counter {
+  text-align: center;
+  margin: 0;
+}
+
+.tagcontainer {
+  margin-top: 10px;
+}
+
+.tag {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 5px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: indigo;
+  transition: all 0.5s ease-in;
+  font-weight: 300;
+  font-size: 12px;
+  text-transform: capitalize;
+  box-shadow: 2px 2px 6px -3px #000;
+}
+
+.tag:hover {
+  border: 1px solid indigo;
+}
+
+.main-wrapper > .gamewrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  text-align: center;
+  width: calc(100% - 100px);
+  margin: 50px auto;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.12), 0px 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+body > .gamewrapper ~ .gamewrapper {
+  margin-top: 0px;
+}
+
+.gamewrapper > * {
+  padding:  10px;
+  flex: 1 100%;
+}
+
+table {
+  text-align: left;
+  margin: 0 auto;
+  width: 80%;
+}
+
+caption {
+  font-size: 18px;
+}
+
+td {
+  font-size: 14px;
+}
+
+.adminTable {
+  margin-bottom: 50px;
+}
+
+.adminTable th {
+  text-align: center;
+}
+
+.adminTable tr > td {
+  text-align: center;
+}
+
+.adminTable tr > td ~ td {
+  text-align: left;
+}
+
+.adminTable tbody tr {
+  padding: 6px;
+}
+
+.adminTable input {
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid indigo;
+}
+
+.adminTable tbody tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+.c-xsmall {
+  width: 5%;
+}
+
+.c-small {
+  width: 10%;
+}
+
+.c-medium {
+  width: 20%;
+}
+
+input {
+  width: 100%;
+}
+.btncontainer {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.button {
+  color: white;
+  background-color: indigo;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 35px;
+  width: 100px;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
+  background-color: #6D00A4;
+}
+
+.nav-buttons .button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  line-height: 30px;
+  font-size: 20px;
+}
+
+.warning,
+.nav-buttons {
+  width: calc(100% - 15vw);
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.warning {
+  padding: 12px;
+  width: 400px;
+  margin: 50px auto;
+  color: #d8000c;
+  border: 1px solid #d8000c;
+  background-color: #ffbaba;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+
+.gametitle {
+  border-bottom: 1px solid #eee;
+  font-size: 24px;
+  padding: 24px;
+  font-weight: 300;
+}
+
+.gamenotes {
+  border-top: 1px solid #eee;
+}
+
+.gamedescription {
+  text-align: left;
+  font-size: 14px;
+}
+
+@media all and (min-width: 600px) {
+  .aside {
+    flex: 1 auto;
+  }
+}
+@media all and (min-width: 800px) {
+  .gamedescription {
+    flex: 3 0px;
+  }
+
+  .gameimg {
+    order: 1;
+  }
+
+  .gamedescription {
+    order: 2;
+  }
+
+  .gamestats {
+    order: 3;
+  }
+
+  .gameexpan {
+    order: 4;
+  }
+
+  .gamenotes {
+    order: 5;
+  }
+}
+
+
