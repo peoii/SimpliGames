@@ -5,7 +5,7 @@ I liked working on it well enough that I decided to place this online anyone int
 
 ### _Installation_
 1. clone the repository or download zip and extract
-2. ensure the .json files are in the proper group to be written by the web server (www-data or similar)
+2. ensure the .json files are in the proper group to be written by the web server (www-data or similar) and remove the .sample portion of the name
 3. modify the config.php.sample file with your preferences and administration password
 4. rename config.php.sample to config.php
 5. modify the stylesheet to your liking and/or replace the images
