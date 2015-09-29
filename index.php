@@ -1,4 +1,17 @@
 <?php
+// Copyright © 2015 Jamie Harrell <jharrell@gmail.com>
+//
+// Licensed under the Simple Public License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://opensource.org/licenses/Simple-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 include_once("./config.php");
 
 session_start();
@@ -23,7 +36,7 @@ $gHCColors = array(
   "Card Game" => "heart",
   "Trivia" => "graduation-cap",
   "Fighting" => "fighter-jet",
-  "Dice" => "cube", 
+  "Dice" => "cube",
   "Animals" => "hand-lizard-o",
   "Pirates" => "ship",
   "Civilization" => "globe",
@@ -137,16 +150,16 @@ function handleDiffs() {
     if(isset($_POST[$cData->bggid . "-delete"]) && ($_POST[$cData->bggid . "-delete"] == "on")) {
       unset($GLOBALS['gData'][$key]);
       continue;
-    } 
+    }
 
     if(isset($_POST[$cData->bggid . "-played"]) && ($_POST[$cData->bggid . "-played"] == "on")) {
       $cData->played = 1;
-    } 
+    }
 
     if(isset($_POST[$cData->bggid . "-cost"]) && ($_POST[$cData->bggid . "-cost"] != $cData->cost)) {
       $cData->cost = $_POST[$cData->bggid . "-cost"];
     }
-   
+
     if(isset($_POST[$cData->bggid . "-costwhere"]) && ($_POST[$cData->bggid . "-costwhere"] != $cData->costwhere)) {
       $cData->costwhere = $_POST[$cData->bggid . "-costwhere"];
     }
@@ -158,7 +171,7 @@ function handleDiffs() {
     if(isset($_POST[$cData->bggid . "-notes"]) && ($_POST[$cData->bggid . "-notes"] != $cData->notes)) {
       $cData->notes = $_POST[$cData->bggid . "-notes"];
     }
-    
+
     foreach($GLOBALS['ggUsers'] as $cUser) {
       if(isset($_POST[$cData->bggid."-notes".$cUser]) && ($_POST[$cData->bggid."-notes".$cUser] != $cData->notes->$cUser)) {
         $cData->notes->$cUser = $_POST[$cData->bggid."-notes".$cUser];
@@ -168,7 +181,7 @@ function handleDiffs() {
     $tArr[$tC] = $cData;
     $tC++;
   }
-  
+
   if(isset($_POST['additem-new'])) {
     $lTmp = new stdClass();
     $lTmp->bggid = $_POST['additem-bggid'];
@@ -184,7 +197,7 @@ function handleDiffs() {
 
     $tArr[$tC] = $lTmp;
   }
- 
+
   fwrite($fHandle,json_encode($tArr,JSON_PRETTY_PRINT));
   fflush($fHandle);
   fclose($fHandle);
@@ -202,11 +215,11 @@ function loadBGGData($letters) {
       continue;
     }
     $baseurl = $baseurl . $cGame->bggid . ",";
-    
+
   }
 
   $xml = simplexml_load_file($baseurl);
- 
+
   $GLOBALS['gXML'] = $xml;
 }
 
@@ -222,7 +235,7 @@ function printSplits($page) {
       if($key==1){
         $cPrint = "#".$cBreak;
       } else {
-        $cPrint = $cBreak; 
+        $cPrint = $cBreak;
       }
       print(strtoupper(($cPrint)));
       print("]</a>");
@@ -268,7 +281,7 @@ if($pageID != "admin") {
       <nav>
       <?php
         foreach($GLOBALS['gValidPages'] as $cPage => $cIcon) {
-          if($cPage == "admin") { continue; } 
+          if($cPage == "admin") { continue; }
           else {
       ?>
         <a href="./?page=<?php print($cPage); ?>"<?php if($GLOBALS['pageID'] == $cPage) { print(" class=\"active\""); } ?>><i class="fa fa-<?php print($cIcon); ?> fa-fw"></i> <?php print(ucwords($cPage));?> <span>(<?php print($GLOBALS['gCounts'][$cPage]);?>)</span></a>
@@ -277,7 +290,6 @@ if($pageID != "admin") {
           } // if else
         } //foreach
       ?>
-
       <?php
         if(isPageAdmin()) {
       ?>
@@ -307,12 +319,12 @@ if($pageID != "admin") {
         </form>
       <?php
           } else {
-      if(isset($POST['processedPage'])) {
+            if(isset($POST['processedPage'])) {
       ?>
               Data Written to <?php print($POST['processedPage']); ?>
       <?php
             } // if
-    } // if else else
+          } // if else else
         } //if admin
       ?>
       </div>
@@ -352,7 +364,7 @@ if($pageID != "admin") {
           ?>
             <tr>
               <td><input type="checkbox" name="<?php print($cData->bggid."-delete"); ?>"></td><td><?php print($cData->bggid); ?></td><td><?php print($cData->title); ?></td>
-              <?php 
+              <?php
                 switch($GLOBALS['pageID']) {
                   case "owned":
                     print("<td><input type=\"text\" value=\"".$cData->notes."\" name=\"".$cData->bggid."-notes\"></td>");
@@ -380,7 +392,7 @@ if($pageID != "admin") {
           <tbody>
             <tr>
               <td><input type="checkbox" name="additem-new"></td><td><input type="text" value="" name="additem-bggid"></td><td><input type="text" value="" name="additem-title"></td>
-              <?php 
+              <?php
                 switch($GLOBALS['pageID']) {
                   case "owned":
                     print("<td><input type=\"text\" name=\"additem-notes\"></td>");
@@ -398,7 +410,7 @@ if($pageID != "admin") {
                     }
                     break;
                 } //switch
-              ?> 
+              ?>
             </tr>
           </tbody>
         </table>
@@ -483,7 +495,6 @@ if($pageID != "admin") {
                 print(" ");
               }
               $linkFirst++;
-               
               print("<a class=\"tag\" href=\"?page=".$GLOBALS['pageID']."&amp;t=".urlencode($cLink->attributes()->value)."\">");
               print($cLink->attributes()->value);
               print("</a>");
@@ -501,11 +512,12 @@ if($pageID != "admin") {
           foreach($cXML->link as $cLink) {
             if($cLink->attributes()->type == "boardgameexpansion") {
               if($numExpans == 0) {
-                print("<table>");
-                print("<caption>Expansions</caption><tr>");
+                print("<input type=\"checkbox\" id=\"".$cXML->attributes()->id."-expancheck\">");
+                print("<label for=\"".$cXML->attributes()->id."-expancheck\">Expansions</label><div>");
+                print("<table><tr>");
               } else if (($numExpans % 2) == 0) {
-          print("<tr>");
-        }
+                print("<tr>");
+              }
               $numExpans++;
               print("<td>");
               if(in_array(trim($cLink->attributes()->id),$GLOBALS['gExpan'])) {
@@ -521,7 +533,7 @@ if($pageID != "admin") {
             }
           } //foreach
         if($numExpans > 0) {
-          print("</table>");
+          print("</table></div>");
         }
         ?>
       </div>
@@ -547,7 +559,7 @@ if($pageID != "admin") {
       } //foreach gXML
     } else {
     ?>
-    <div class="warning"><i class="fa fa-fw fa-warning"></i> No games found.</div>
+    <div class="error"><i class="fa fa-fw fa-warning"></i> No games found.</div>
     <?php
       } //if for empty gxml
     } // if not page == admin
@@ -577,10 +589,14 @@ if($pageID != "admin") {
    <?php
    }
    ?>
-   <footer>
-     <a href="//github.com/peoii/SimpliGames/"><i class="fa fa-fw fa-github"></i><span class="collapse-foot"> Github</span></a> &middot;
-     <a href="//github.com/peoii/SimpliGames/issues"><i class="fa fa-fw fa-code-fork"></i><span class="collapse-foot"> Issue Tracker</span></a> &middot;
-     Created By <a href="//jamie.harrell.ca/">@peoii</a>
-   </footer>
+    <footer>
+      <a href="//github.com/peoii/SimpliGames/"><i class="fa fa-fw fa-github"></i><span class="collapse-foot"> Github</span></a> &middot;
+      <a href="//github.com/peoii/SimpliGames/issues"><i class="fa fa-fw fa-code-fork"></i><span class="collapse-foot"> Issue Tracker</span></a> &middot;
+      Created By <a href="//jamie.harrell.ca/">@peoii</a><br />
+      <sub>Powered by <a href="//www.boardgamegeek.com/">Board Game Geek</a></sub>
+    </footer>
+    <!--
+     <?php print_r($cXML); ?>
+    -->
   </body>
 </html>

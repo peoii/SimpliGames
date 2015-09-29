@@ -75,17 +75,17 @@ header h1 {
   background-color: indigo;
   color: white;
   text-align: left;
-  width: 100%;
+  width: calc(100% - 20px);
   padding: 10px 10px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
 }
 .sidebar-head a {
   text-decoration: none;
-  color: #fff;
+  color: white;
 }
 
 .sidebar-head a:hover {
-  color: #fff;
+  color: white;
 }
 
 body > footer {
@@ -112,6 +112,21 @@ body > footer a:hover {
   transition: all 0.2s ease-in;
 }
 
+body > footer sub {
+  font-size: 12px;
+}
+body > footer sub a {
+  color: gray;
+  padding: 2px;
+  transition: all 0.2s ease-in;
+}
+
+body > footer sub a:hover {
+  color: indigo;
+  text-decoration: underline;
+  background-color: white;
+}
+
 nav {
   min-height: 50px;
   position: relative;
@@ -120,7 +135,7 @@ nav {
 nav a {
   display: block;
   text-decoration: none;
-  color: #fff;
+  color: white;
   padding: 15px;
   transition: all 0.3s ease-in;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
@@ -277,7 +292,7 @@ td {
 }
 
 .adminTable tbody tr:nth-child(odd) {
-  background-color: #eee;
+  background-color: #EEE;
 }
 
 .c-xsmall {
@@ -328,22 +343,41 @@ input {
   font-size: 20px;
 }
 
-.warning,
+.error,
+.attention,
+.passing,
 .nav-buttons {
   width: calc(100% - 15vw);
   text-align: center;
   margin-bottom: 100px;
 }
 
-.warning {
+.error,
+.attention,
+.passing {
   padding: 12px;
   width: 400px;
   margin: 50px auto;
-  color: #d8000c;
-  border: 1px solid #d8000c;
-  background-color: #ffbaba;
   vertical-align: middle;
   border-radius: 3px;
+}
+
+.error {
+  color: #D8000C;
+  border: 1px solid #D8000C;
+  background-color: #FFBABA;
+}
+
+.attention {
+  color: #9F6000;
+  border: 1px solid #9F6000;
+  background-color: #FEEFB3;
+}
+
+.passing {
+  color: #0C00D8;
+  border: 1px solid #0C00D8;
+  background-color: #BABAFF;
 }
 
 .gametitle {
@@ -354,12 +388,77 @@ input {
 }
 
 .gamenotes {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #EEE;
 }
 
 .gamedescription {
   text-align: left;
   font-size: 14px;
+}
+
+.gameexpan {
+  overflow: hidden;
+}
+
+.gameexpan input {
+  display: none;
+}
+
+.gameexpan input + label {
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.75s;
+  line-height: 17px;
+}
+
+.gameexpan input + label:after {
+  position: relative;
+  display: inline-block;
+  top: 0;
+  right: -10px;
+  content: '\f067';
+  font-size: 14px;
+  font-family: 'FontAwesome';
+  background-color: indigo;
+  width: 17px;
+  padding: 5px;
+  border-radius: 50%;
+  color: white;
+  transition: transform 0.75s;
+  text-align: center;
+}
+
+.gameexpan input:checked + label:after {
+  content: '\f068';
+  transform: rotate(180deg);
+}
+
+.gameexpan input:hover + label:after {
+  background-color: #913ECE;
+}
+
+.gameexpan div {
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  color: transparent;
+  transition: all 1s;
+}
+
+.gameexpan table tbody tr td {
+  min-width: 15vw;
+}
+
+.gameexpan input:checked + label + div {
+  overflow: auto;
+  opacity: 1;
+  max-height: 1500px;
+  color: black;
+  transition: all 1s;
 }
 
 @media all and (min-width: 600px) {
