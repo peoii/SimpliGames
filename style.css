@@ -210,14 +210,17 @@ nav a.letterCurrent {
   text-decoration: none;
   color: indigo;
   transition: all 0.5s ease-in;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 12px;
   text-transform: capitalize;
+  font-variant: small-caps;
   box-shadow: 2px 2px 6px -3px #000;
 }
 
 .tag:hover {
   border: 1px solid indigo;
+  background-color: indigo;
+  color: white;
 }
 
 .main-wrapper > .gamewrapper {
@@ -375,9 +378,32 @@ input {
 }
 
 .passing {
-  color: #0C00D8;
-  border: 1px solid #0C00D8;
-  background-color: #BABAFF;
+  color: #0CD800;
+  border: 1px solid #0CD800;
+  background-color: #BAFFBA;
+}
+
+.dataTag {
+  display: inline-block;
+  padding: 0;
+  border-radius: 5px;
+  background-color: indigo;
+  color: white;
+  border: 1px solid indigo;
+  margin-top: 10px;
+}
+
+.dataTag i {
+  margin: 5px;
+}
+
+.dataTag .dataValue {
+  display: block;
+  width: calc(100% - 10px);
+  color: indigo;
+  border-radius: 0px 0px 5px 5px;
+  background-color: white;
+  padding: 5px;
 }
 
 .gametitle {
@@ -407,18 +433,16 @@ input {
 .gameexpan input + label {
   cursor: pointer;
   display: block;
-  margin: 0 auto;
   font-weight: bold;
+  font-size: 18px;
   padding: 5px;
-  border-radius: 50%;
   transition: background 0.75s;
-  line-height: 17px;
+  line-height: 18px;
 }
 
 .gameexpan input + label:after {
   position: relative;
   display: inline-block;
-  top: 0;
   right: -10px;
   content: '\f067';
   font-size: 14px;
@@ -427,6 +451,7 @@ input {
   width: 17px;
   padding: 5px;
   border-radius: 50%;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
   color: white;
   transition: transform 0.75s;
   text-align: center;

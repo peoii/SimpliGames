@@ -319,9 +319,9 @@ if($pageID != "admin") {
         </form>
       <?php
           } else {
-            if(isset($POST['processedPage'])) {
+            if(isset($_POST['processedPage'])) {
       ?>
-              Data Written to <?php print($POST['processedPage']); ?>
+              <div class="passing"><i class="fa fa-fw fa-check"></i> Game data written to <?php print($_POST['processedPage']); ?>.</div>
       <?php
             } // if
           } // if else else
@@ -455,39 +455,36 @@ if($pageID != "admin") {
       <article class="gamedescription"><h4>Description</h4><?php print($cXML->description);?></article>
       <aside class="aside gameimg"><img src="<?php print($cXML->thumbnail);?>" alt="<?php print($cXML->name[0]->attributes()->value);?>"></aside>
       <aside class="aside gamestats">
-        <span style="text-decoration: underline;font-weight:bold;">Details</span><br>
-        <sub>
-          Avg. Playing Time: <b><?php print($cXML->playingtime->attributes()->value);?></b> Minutes<br>
-          Number of Players: <b><?php print($cXML->minplayers->attributes()->value);?> - <?php print($cXML->maxplayers->attributes()->value);?></b><br>
-          <?php
-            if($GLOBALS['pageID'] == "wanted") {
-          ?>
-            Have played: <b><?php
-              foreach($GLOBALS['gData'] as $cData) {
-                if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
-                  if($cData->played) { print("Yes"); } else { print("No"); }
-                }
+        <div class="dataTag"><i class="fa fa-fw fa-2x fa-clock-o"></i><span class="dataValue"><?php print($cXML->playingtime->attributes()->value);?></span></div>
+        <div class="dataTag"><i class="fa fa-fw fa-2x fa-user-plus"></i><span class="dataValue"><?php print($cXML->minplayers->attributes()->value);?> - <?php print($cXML->maxplayers->attributes()->value);?></span></div>
+        <?php
+          if($GLOBALS['pageID'] == "wanted") {
+        ?>
+          <div class="dataTag"><i class="fa fa-fw fa-2x fa-play"></i><span class="dataValue"><?php
+            foreach($GLOBALS['gData'] as $cData) {
+              if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
+                if($cData->played) { print("Yes"); } else { print("No"); }
               }
-            ?></b><br>
-            How found: <b><?php
-              foreach($GLOBALS['gData'] as $cData) {
-                if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
-                  print($cData->howFound);
-                }
-              } //foreach
-            ?></b><br>
-            Cost Estimate: <b><?php
-              foreach($GLOBALS['gData'] as $cData) {
-                if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
-                  print($cData->cost);
-                  print(" @ ");
-                  print($cData->costwhere);
-                }
-              } //foreach
-            ?></b><br>
-          <?php } ?>
-        </sub>
-        <div class="tagcontainer">Tags: <b><?php
+            }
+          ?></span></div>
+          <div class="dataTag"><i class="fa fa-fw fa-2x fa-search"></i><span class="dataValue"><?php
+            foreach($GLOBALS['gData'] as $cData) {
+              if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
+                print($cData->howFound);
+              }
+            } //foreach
+          ?></span></div><br />
+          <div class="dataTag"><i class="fa fa-fw fa-2x fa-dollar"></i><span class="dataValue"><?php
+            foreach($GLOBALS['gData'] as $cData) {
+              if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
+                print($cData->cost);
+                print(" <br/> ");
+                print($cData->costwhere);
+              }
+            } //foreach
+          ?></span></div>
+        <?php } ?>
+        <div class="tagcontainer"><i class="fa fa-fw fa-2x fa-tag"></i> <b><?php
           $linkFirst = 0;
           foreach($cXML->link as $cLink) {
             if($cLink->attributes()->type == "boardgamecategory") {
