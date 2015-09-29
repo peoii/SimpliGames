@@ -534,23 +534,23 @@ if($pageID != "admin") {
         }
         ?>
       </div>
-      <footer class="gamenotes">
-        <?php
-          foreach($GLOBALS['gData'] as $cData) {
-            if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
-              if($GLOBALS['pageID'] == "tried"){
-            foreach($GLOBALS['ggUsers'] as $cUser) {
-            print($cUser.": ".$cData->notes->$cUser."<br>");
-          }
-              } else if($cData->notes == "") {
-                print("No comment set yet");
-              } else {
-                print($cData->notes);
+      <?php
+        foreach($GLOBALS['gData'] as $cData) {
+          if(strcasecmp(trim($cXML->name[0]->attributes()->value),$cData->title) == 0) {
+            if($GLOBALS['pageID'] == "tried"){
+              print("<footer class=\"gamenotes\">");
+              foreach($GLOBALS['ggUsers'] as $cUser) {
+                print($cUser.": ".$cData->notes->$cUser."<br>");
               }
+              print("</footer>");
+            } else if($cData->notes !== "") {
+              print("<footer class=\"gamenotes\">");
+              print($cData->notes);
+              print("</footer>");
             }
-          } //foreach
-        ?>
-      </footer>
+          }
+        } //foreach
+      ?>
     </div>
     <?php
       } //foreach gXML
