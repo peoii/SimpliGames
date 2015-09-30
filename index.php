@@ -216,6 +216,9 @@ function loadBGGData($letters) {
     if($GLOBALS['ggSplitByLetters'] && ((strpos($GLOBALS['gLetterBreaks'][$letters],strtolower($cGame->title[0]))) === false) && !$numsFirst ) {
       continue;
     }
+    if(isset($_POST['searchedPage']) && (stristr($cGame->title,$_POST['simplisearch']) === FALSE)) {
+      continue;
+    }
     $baseurl = $baseurl . $cGame->bggid . ",";
 
   }
@@ -443,10 +446,6 @@ if($pageID != "admin") {
                       $catFound = TRUE;
                     }
                   }
-                }
-              } else if(isset($_POST['searchedPage'])) {
-                if(stristr($cXML->name[0]->attributes()->value,$_POST['simplisearch']) !== FALSE) {
-                  $catFound = TRUE;
                 }
               } else {
                 $catFound = TRUE;
