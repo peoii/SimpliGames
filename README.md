@@ -15,7 +15,7 @@ Coming Soon
 
 ### _Roadmap_
 * Edit owned expansions in browser
-* Round out look and feel of overall app
+* Round out look and feel of overall app - *In Progress*
 
 ### _Possible Future Inclusions_
 * Search
