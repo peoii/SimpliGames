@@ -1,5 +1,7 @@
 SimpliGames
 ====================================
+[![Build Status](https://travis-ci.org/peoii/SimpliGames.svg?branch=master)](https://travis-ci.org/peoii/SimpliGames)
+
 This whole project started as a simple listing online of the games my wife and I own, want, and have tried but don't wish to purchase.
 I liked working on it well enough that I decided to place this online anyone interested to try out.
 
