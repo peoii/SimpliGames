@@ -292,7 +292,7 @@ if($pageID != "admin") {
           if($cPage == "admin") { continue; }
           else {
       ?>
-        <a href="./?page=<?php print($cPage); ?>"<?php if($GLOBALS['pageID'] == $cPage) { print(" class=\"active\""); } ?>><i class="fa fa-<?php print($cIcon); ?> fa-fw"></i> <?php print(ucwords($cPage));?> <span>(<?php print($GLOBALS['gCounts'][$cPage]);?>)</span></a>
+        <a href="./?page=<?php print($cPage); if(isset($GLOBALS['tagID'])) { print("&amp;t=".$GLOBALS['tagID']); }   ?>"<?php if($GLOBALS['pageID'] == $cPage) { print(" class=\"active\""); } ?>><i class="fa fa-<?php print($cIcon); ?> fa-fw"></i> <?php print(ucwords($cPage));?> <span>(<?php print($GLOBALS['gCounts'][$cPage]);?>)</span></a>
       <?php
             printSplits($cPage);
           } // if else
