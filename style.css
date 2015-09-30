@@ -369,6 +369,7 @@ input {
   font-size: 20px;
 }
 
+.searched,
 .error,
 .attention,
 .passing,
@@ -378,6 +379,7 @@ input {
   margin-bottom: 100px;
 }
 
+.searched,
 .error,
 .attention,
 .passing {
@@ -385,7 +387,7 @@ input {
   width: 400px;
   margin: 50px auto;
   vertical-align: middle;
-  border-radius: 3px;
+  font-weight: 300;
 }
 
 .error {
@@ -404,6 +406,12 @@ input {
   color: #0CD800;
   border: 1px solid #0CD800;
   background-color: #BAFFBA;
+}
+
+.searched {
+  border: 1px solid indigo;
+  color: white;
+  background-color: #8F00F8;
 }
 
 .dataTag {

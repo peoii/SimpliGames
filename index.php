@@ -437,8 +437,10 @@ if($pageID != "admin") {
       <?php
         } else if($GLOBALS['pageID'] != "admin") {
           if(count($GLOBALS['gXML']) > 0) {
+            $firstPass = TRUE;
             foreach($GLOBALS['gXML'] as $cXML) {
               $catFound = FALSE;
+
               if(isset($GLOBALS['tagID'])) {
                 foreach($cXML->link as $cLink) {
                   if($cLink->attributes()->type == "boardgamecategory") {
@@ -452,6 +454,9 @@ if($pageID != "admin") {
               }
               if($catFound == FALSE) {
                 continue;
+              } else if(isset($_POST['simplisearch']) && $firstPass){
+                $firstPass = FALSE;
+                print("<div class=\"searched\"><i class=\"fa fa-fw fa-lg fa-search\"></i> Showing search for '".$_POST['simplisearch']."'</div>");
               }
       ?>
       <div class="gamewrapper">
