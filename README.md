@@ -18,9 +18,9 @@ Coming Soon
 ### _Roadmap_
 * Edit owned expansions in browser
 * Round out look and feel of overall app - *In Progress*
+* Search - *In Progress*
 
 ### _Possible Future Inclusions_
-* Search
 * "Cliff Note" style rules
 * Barcode Scan-To-Add (potential, need a solid mobile library)
 * Check to move from Wish -> Owned
