@@ -231,7 +231,11 @@ function printSplits($page) {
   if($GLOBALS['ggSplitByLetters'] && ($GLOBALS['pageID'] == $page)) {
     print("<div class=\"letterIDs\">");
     foreach($GLOBALS['gLetterBreaks'] as $key => $cBreak) {
-      print("<a href=\"./?page=".$GLOBALS['pageID']."&amp;letters=".$key."\" class=\"letterTags".(($GLOBALS['letterID'] == $key) ? ' letterCurrent' : '')."\">[");
+      unset($tTags);
+      if(isset($GLOBALS["tagID"])){
+        $tTags = "&amp;t=".$GLOBALS["tagID"];
+      }
+      print("<a href=\"./?page=".$GLOBALS['pageID']."&amp;letters=".$key.(isset($GLOBALS['tagID']) ? $tTags : '')."\" class=\"letterTags".(($GLOBALS['letterID'] == $key) ? ' letterCurrent' : '')."\">[");
       if($key==1){
         $cPrint = "#".$cBreak;
       } else {
@@ -278,6 +282,10 @@ if($pageID != "admin") {
   <body>
     <div class="sidebar-wrapper">
       <div class="sidebar-head"><i class="fa fa-bars fa-fw"></i> <a href="./">Menu</a></div>
+      <div class="sidebar-search">
+        <input type="text" name="simplisearch">
+        <input type="submit" name="submit_search" value="&#xf002">
+      </div>
       <nav>
       <?php
         foreach($GLOBALS['gValidPages'] as $cPage => $cIcon) {
@@ -456,7 +464,8 @@ if($pageID != "admin") {
       <aside class="aside gameimg"><img src="<?php print($cXML->thumbnail);?>" alt="<?php print($cXML->name[0]->attributes()->value);?>"></aside>
       <aside class="aside gamestats">
         <div class="dataTag"><i class="fa fa-fw fa-2x fa-clock-o"></i><span class="dataValue"><?php print($cXML->playingtime->attributes()->value);?></span></div>
-        <div class="dataTag"><i class="fa fa-fw fa-2x fa-user-plus"></i><span class="dataValue"><?php print($cXML->minplayers->attributes()->value);?> - <?php print($cXML->maxplayers->attributes()->value);?></span></div>
+        <div class="dataTag"><i class="fa fa-fw fa-2x fa-users"></i><span class="dataValue"><?php print($cXML->minplayers->attributes()->value);?> - <?php print($cXML->maxplayers->attributes()->value);?></span></div>
+        <div class="dataTag"><i class="fa fa-fw fa-2x fa-child"></i><span class="dataValue"><?php print($cXML->minage->attributes()->value);?>+</span></div>
         <?php
           if($GLOBALS['pageID'] == "wanted") {
         ?>

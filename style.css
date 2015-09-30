@@ -69,6 +69,7 @@ header h1 {
   background-color: black;
 }
 
+.sidebar-search,
 .sidebar-head {
   font-size: 22px;
   font-weight: 300;
@@ -79,6 +80,7 @@ header h1 {
   padding: 10px 10px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
 }
+
 .sidebar-head a {
   text-decoration: none;
   color: white;
@@ -86,6 +88,28 @@ header h1 {
 
 .sidebar-head a:hover {
   color: white;
+}
+
+.sidebar-search input[type="text"] {
+  padding: 5px;
+  line-height: 20px;
+  width: 80%;
+  border: 0;
+  margin: 0;
+  box-shadow: 2px 2px 6px -3px #000;
+}
+
+.sidebar-search input[type="submit"] {
+  position: relative;
+  left: -6px;
+  height: 30px;
+  width: 11%;
+  background-color: #913ECE;
+  color: white;
+  font-family: 'FontAwesome';
+  margin: 0;
+  border: 0;
+  box-shadow: 2px 2px 6px -3px #000;
 }
 
 body > footer {
@@ -203,7 +227,6 @@ nav a.letterCurrent {
 
 .tag {
   border: 1px solid #ddd;
-  border-radius: 3px;
   padding: 5px;
   margin-top: 10px;
   display: inline-block;
@@ -386,11 +409,11 @@ input {
 .dataTag {
   display: inline-block;
   padding: 0;
-  border-radius: 5px;
   background-color: indigo;
   color: white;
   border: 1px solid indigo;
   margin-top: 10px;
+  box-shadow: 2px 2px 6px -3px rgba(0,0,0,0.3);
 }
 
 .dataTag i {
@@ -401,7 +424,6 @@ input {
   display: block;
   width: calc(100% - 10px);
   color: indigo;
-  border-radius: 0px 0px 5px 5px;
   background-color: white;
   padding: 5px;
 }
