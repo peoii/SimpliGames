@@ -71,7 +71,9 @@ if(isset($_GET["logout"])) {
   $_SESSION['uIsAdmin'] = "bollocks";
 }
 
-if(!isset($_GET["page"]) || !array_key_exists($_GET["page"],$gValidPages)) {
+if(isset($_POST['searchedPage']) && array_key_exists($_POST['searchedPage'], $gValidPages)) {
+  $pageID = $_POST['searchedPage'];
+} else if(!isset($_GET["page"]) || !array_key_exists($_GET["page"],$gValidPages)) {
   $pageID = "owned";
 } else {
   $pageID = $_GET["page"];
@@ -223,7 +225,7 @@ function loadBGGData($letters) {
   $GLOBALS['gXML'] = $xml;
 }
 
-if(isPageAdmin()) {
+if(isPageAdmin() || isset($_POST['searchedPage'])) {
   $ggSplitByLetters = false;
 }
 
@@ -283,8 +285,11 @@ if($pageID != "admin") {
     <div class="sidebar-wrapper">
       <div class="sidebar-head"><i class="fa fa-bars fa-fw"></i> <a href="./">Menu</a></div>
       <div class="sidebar-search">
-        <input type="text" name="simplisearch">
-        <input type="submit" name="submit_search" value="&#xf002">
+        <form method="post" action="./">
+          <input type="hidden" name="searchedPage" value="<?php print($GLOBALS['pageID']); ?>">
+          <input type="text" name="simplisearch">
+          <input type="submit" name="submit_search" value="&#xf002">
+        </form>
       </div>
       <nav>
       <?php
@@ -430,7 +435,7 @@ if($pageID != "admin") {
         } else if($GLOBALS['pageID'] != "admin") {
           if(count($GLOBALS['gXML']) > 0) {
             foreach($GLOBALS['gXML'] as $cXML) {
-              $catFound = false;
+              $catFound = FALSE;
               if(isset($GLOBALS['tagID'])) {
                 foreach($cXML->link as $cLink) {
                   if($cLink->attributes()->type == "boardgamecategory") {
@@ -439,9 +444,15 @@ if($pageID != "admin") {
                     }
                   }
                 }
-                if($catFound == false) {
-                  continue;
+              } else if(isset($_POST['searchedPage'])) {
+                if(stristr($cXML->name[0]->attributes()->value,$_POST['simplisearch']) !== FALSE) {
+                  $catFound = TRUE;
                 }
+              } else {
+                $catFound = TRUE;
+              }
+              if($catFound == FALSE) {
+                continue;
               }
       ?>
       <div class="gamewrapper">
