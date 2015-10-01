@@ -1,6 +1,7 @@
 SimpliGames
 ====================================
 [![Build Status](https://travis-ci.org/peoii/SimpliGames.svg?branch=master)](https://travis-ci.org/peoii/SimpliGames)
+[![Code Climate](https://codeclimate.com/github/peoii/SimpliGames/badges/gpa.svg)](https://codeclimate.com/github/peoii/SimpliGames)
 
 This whole project started as a simple listing online of the games my wife and I own, want, and have tried but don't wish to purchase.
 I liked working on it well enough that I decided to place this online anyone interested to try out.
@@ -26,3 +27,4 @@ Coming Soon
 * Check to move from Wish -> Owned
 * Admin interface for adding users (low priority, shouldn't change often)
 * Consider local caching of data
+* Look into better Category Icon system
