@@ -126,9 +126,23 @@ function loadExpans() {
 }
 
 function loadJSONData($whatFile) {
-  $fName = "./list.".$whatFile.".json";
-  $lJSON = file_get_contents($fName);
-  $GLOBALS['gData'] = json_decode($lJSON);
+  if(!isset($_POST['simplisearch'])) {
+    $fName = "./list.".$whatFile.".json";
+    $lJSON = file_get_contents($fName);
+    $GLOBALS['gData'] = json_decode($lJSON);
+  } else {
+    foreach($GLOBALS['gValidPages'] as $cPage => $cIcon) {
+      if($cPage !== "admin") {
+        $fName = "./list.".$cPage.".json";
+        $lJSON = file_get_contents($fName);
+        $lDecode = json_decode($lJSON);
+        foreach($lDecode as $cDecode) {
+          $cDecode->origin = $cPage;
+        }
+        $GLOBALS['gData'] = array_merge($GLOBALS['gData'],$lDecode);
+      }
+    }
+  }
 }
 
 function loadTotalCounts() {
@@ -440,7 +454,6 @@ if($pageID != "admin") {
             $firstPass = TRUE;
             foreach($GLOBALS['gXML'] as $cXML) {
               $catFound = FALSE;
-
               if(isset($GLOBALS['tagID'])) {
                 foreach($cXML->link as $cLink) {
                   if($cLink->attributes()->type == "boardgamecategory") {
@@ -474,6 +487,15 @@ if($pageID != "admin") {
           }
         ?>
         <?php print($cXML->name[0]->attributes()->value); ?> (<?php print($cXML->yearpublished->attributes()->value); ?>)
+        <?php
+        if(isset($_POST['simplisearch'])) {
+          foreach($GLOBALS['gData'] as $cData) {
+            if($cData->bggid == $cXML->attributes()->id) {
+              print("<sub>Source: ".ucwords($cData->origin)."</sub>");
+            }
+          }
+        }
+        ?>
       </div>
       <article class="gamedescription"><h4>Description</h4><?php print($cXML->description);?></article>
       <aside class="aside gameimg"><img src="<?php print($cXML->thumbnail);?>" alt="<?php print($cXML->name[0]->attributes()->value);?>"></aside>
@@ -606,10 +628,10 @@ if($pageID != "admin") {
     <?php
       }
     ?>
-   </div>
-   <?php
-   }
-   ?>
+  </div>
+  <?php
+    }
+  ?>
     <footer>
       <a href="//github.com/peoii/SimpliGames/"><i class="fa fa-fw fa-github"></i><span class="collapse-foot"> Github</span></a> &middot;
       <a href="//github.com/peoii/SimpliGames/issues"><i class="fa fa-fw fa-code-fork"></i><span class="collapse-foot"> Issue Tracker</span></a> &middot;

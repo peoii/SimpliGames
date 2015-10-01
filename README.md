@@ -19,7 +19,6 @@ Coming Soon
 ### _Roadmap_
 * Edit owned expansions in browser
 * Round out look and feel of overall app - *In Progress*
-* Search - *In Progress*
 
 ### _Possible Future Inclusions_
 * "Cliff Note" style rules

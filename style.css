@@ -443,6 +443,12 @@ input {
   font-weight: 300;
 }
 
+.gametitle sub {
+  display: block;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
 .gamenotes {
   border-top: 1px solid #EEE;
 }
