@@ -85,8 +85,8 @@ if(!isset($_GET["letters"]) || !array_key_exists(trim($_GET["letters"]),$gLetter
   $letterID = $_GET["letters"];
 }
 
-if(isset($_GET["t"])) {
-  $tagID = $_GET["t"];
+if(isset($_GET["tag"])) {
+  $tagID = $_GET["tag"];
 }
 
 if(isset($_POST["game_adm_pwd"]) && (trim($_POST["game_adm_pwd"]) === $ggAdminPass)) {
@@ -252,7 +252,7 @@ function printSplits($page) {
     foreach($GLOBALS['gLetterBreaks'] as $key => $cBreak) {
       unset($tTags);
       if(isset($GLOBALS["tagID"])){
-        $tTags = "&amp;t=".$GLOBALS["tagID"];
+        $tTags = "&amp;tag=".$GLOBALS["tagID"];
       }
       print("<a href=\"./?page=".$GLOBALS['pageID']."&amp;letters=".$key.(isset($GLOBALS['tagID']) ? $tTags : '')."\" class=\"letterTags".(($GLOBALS['letterID'] == $key) ? ' letterCurrent' : '')."\">[");
       if($key==1){
@@ -314,7 +314,7 @@ if($pageID != "admin") {
           if($cPage == "admin") { continue; }
           else {
       ?>
-        <a href="./?page=<?php print($cPage); if(isset($GLOBALS['tagID'])) { print("&amp;t=".$GLOBALS['tagID']); }   ?>"<?php if($GLOBALS['pageID'] == $cPage) { print(" class=\"active\""); } ?>><i class="fa fa-<?php print($cIcon); ?> fa-fw"></i> <?php print(ucwords($cPage));?> <span>(<?php print($GLOBALS['gCounts'][$cPage]);?>)</span></a>
+        <a href="./?page=<?php print($cPage); if(isset($GLOBALS['tagID'])) { print("&amp;tag=".$GLOBALS['tagID']); }   ?>"<?php if($GLOBALS['pageID'] == $cPage) { print(" class=\"active\""); } ?>><i class="fa fa-<?php print($cIcon); ?> fa-fw"></i> <?php print(ucwords($cPage));?> <span>(<?php print($GLOBALS['gCounts'][$cPage]);?>)</span></a>
       <?php
             printSplits($cPage);
           } // if else
@@ -538,7 +538,7 @@ if($pageID != "admin") {
                 print(" ");
               }
               $linkFirst++;
-              print("<a class=\"tag\" href=\"?page=".$GLOBALS['pageID']."&amp;t=".urlencode($cLink->attributes()->value)."\">");
+              print("<a class=\"tag\" href=\"?page=".$GLOBALS['pageID']."&amp;tag=".urlencode($cLink->attributes()->value)."\">");
               print($cLink->attributes()->value);
               print("</a>");
               if(!($linkFirst % 2)){
