@@ -1,5 +1,8 @@
 ### _CHANGELOG_
 
+# 2015-10-08
+- Impliment BrowseHappy code, because outdated browsers break things and are a security risk
+
 # 2015-10-01
 - Impliment phase 2 of search system.  Search across all lists.
 

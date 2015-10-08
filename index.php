@@ -299,6 +299,9 @@ if($pageID != "admin") {
     <link href='./style.css' rel='stylesheet'>
   </head>
   <body>
+    <!--[if lt IE 9]>
+      <p class="browsehappy"><img src="https://cdn.rawgit.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" />You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
     <div class="sidebar-wrapper">
       <div class="sidebar-head"><i class="fa fa-bars fa-fw"></i> <a href="./">Menu</a></div>
       <div class="sidebar-search">
