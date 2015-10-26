@@ -308,7 +308,7 @@ if($pageID != "admin") {
         <form method="post" action="./">
           <input type="hidden" name="searchedPage" value="<?php print($GLOBALS['pageID']); ?>">
           <input type="text" name="simplisearch">
-          <input type="submit" name="submit_search" value="&#xf002">
+          <input type="submit" name="submit_search" value="&#xf002;">
         </form>
       </div>
       <nav>
