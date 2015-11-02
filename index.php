@@ -131,6 +131,7 @@ function loadJSONData($whatFile) {
     $lJSON = file_get_contents($fName);
     $GLOBALS['gData'] = json_decode($lJSON);
   } else {
+    $cIcon = 0;
     foreach($GLOBALS['gValidPages'] as $cPage => $cIcon) {
       if($cPage !== "admin") {
         $fName = "./list.".$cPage.".json";
@@ -147,6 +148,7 @@ function loadJSONData($whatFile) {
 
 function loadTotalCounts() {
   $lJSON = array();
+  $cIcon = 0;
   foreach($GLOBALS['gValidPages'] as $cPage => $cIcon) {
     if($cPage !== "admin") {
       $fName = "./list.".$cPage.".json";
@@ -376,6 +378,7 @@ if($pageID != "admin") {
                     print("<th>Notes</th>");
                     break;
                   case "wanted":
+                    print("<th class=\"c-xsmall\">Purchased?</th>");
                     print("<th class=\"c-xsmall\">Played?</th>");
                     print("<th class=\"c-xsmall\">Cost</th>");
                     print("<th class=\"c-small\">Where at?</th>");
@@ -403,6 +406,7 @@ if($pageID != "admin") {
                     print("<td><input type=\"text\" value=\"".$cData->notes."\" name=\"".$cData->bggid."-notes\"></td>");
                     break;
                   case "wanted":
+                    print("<td><input type=\"checkbox\" name=\"".$cData->bggid."-purchased\"></td>");
                     print("<td><input type=\"checkbox\" name=\"".$cData->bggid."-played\".".($cData->played ? ' checked': '')."></td>");
                     print("<td><input type=\"text\" name=\"".$cData->bggid."-cost\" value=\"".$cData->cost."\"></td>");
                     print("<td><input type=\"text\" name=\"".$cData->bggid."-costwhere\" value=\"".$cData->costwhere."\"></td>");
@@ -431,6 +435,7 @@ if($pageID != "admin") {
                     print("<td><input type=\"text\" name=\"additem-notes\"></td>");
                     break;
                   case "wanted":
+                    print("<td></td>");
                     print("<td><input type=\"checkbox\" name=\"additem-played\"></td>");
                     print("<td><input type=\"text\" name=\"additem-cost\"></td>");
                     print("<td><input type=\"text\" name=\"additem-costwhere\"></td>");
